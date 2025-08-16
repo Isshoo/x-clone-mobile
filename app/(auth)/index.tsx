@@ -2,25 +2,26 @@ import { useSocialAuth } from "@/hooks/useSocialAuth";
 import { ActivityIndicator, Image, Text, TouchableOpacity, View } from "react-native";
 
 export default function Index() {
-  const { isLoading, handleSocialAuth } = useSocialAuth();
+  const { handleSocialAuth, isLoading } = useSocialAuth();
+
   return (
     <View className="flex-1 bg-white">
-      <View className="flex-1 px-8 justify-center">
-        <View className="flex-1 justify-center ">
-          <View>
+      <View className="flex-1 px-8 justify-between">
+        <View className="flex-1 justify-center">
+          {/* DEMO IMAGE */}
+          <View className="items-center">
             <Image
-              source={require("@/assets/images/auth2.png")}
+              source={require("../../assets/images/auth2.png")}
               className="size-96"
               resizeMode="contain"
             />
           </View>
+
           <View className="flex-col gap-2">
-            {/* google icon */}
+            {/* GOOGLE SIGNIN BTN */}
             <TouchableOpacity
               className="flex-row items-center justify-center bg-white border border-gray-300 rounded-full py-3 px-6"
-              onPress={() => {
-                handleSocialAuth("oauth_google");
-              }}
+              onPress={() => handleSocialAuth("oauth_google")}
               disabled={isLoading}
               style={{
                 shadowColor: "#000",
@@ -31,27 +32,23 @@ export default function Index() {
               }}
             >
               {isLoading ? (
-                <ActivityIndicator size={"small"} color={"#4285f4"} />
+                <ActivityIndicator size="small" color="#4285F4" />
               ) : (
                 <View className="flex-row items-center justify-center">
                   <Image
-                    source={require("@/assets/images/google.png")}
+                    source={require("../../assets/images/google.png")}
                     className="size-10 mr-3"
                     resizeMode="contain"
                   />
-                  <View>
-                    <Text className="text-black font-medium text-base">Sign in with Google</Text>
-                  </View>
+                  <Text className="text-black font-medium text-base">Continue with Google</Text>
                 </View>
               )}
             </TouchableOpacity>
 
-            {/* apple icon */}
+            {/* APPLE SIGNIN ICON */}
             <TouchableOpacity
               className="flex-row items-center justify-center bg-white border border-gray-300 rounded-full py-3 px-6"
-              onPress={() => {
-                handleSocialAuth("oauth_apple");
-              }}
+              onPress={() => handleSocialAuth("oauth_apple")}
               disabled={isLoading}
               style={{
                 shadowColor: "#000",
@@ -62,17 +59,15 @@ export default function Index() {
               }}
             >
               {isLoading ? (
-                <ActivityIndicator size={"small"} color={"#000"} />
+                <ActivityIndicator size="small" color="#000" />
               ) : (
                 <View className="flex-row items-center justify-center">
                   <Image
-                    source={require("@/assets/images/apple.png")}
-                    className="size-7 mr-3"
+                    source={require("../../assets/images/apple.png")}
+                    className="size-8 mr-3"
                     resizeMode="contain"
                   />
-                  <View>
-                    <Text className="text-black font-medium text-base">Sign in with Google</Text>
-                  </View>
+                  <Text className="text-black font-medium text-base">Continue with Apple</Text>
                 </View>
               )}
             </TouchableOpacity>
