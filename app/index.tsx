@@ -1,9 +1,20 @@
-import { Text, View } from "react-native";
+import { useClerk } from "@clerk/clerk-expo";
+import React from "react";
+import { Button, Text, View } from "react-native";
 
-export default function Index() {
+const HomeScreen = () => {
+  const { signOut } = useClerk();
   return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text className="text-xl font-bold text-red-500">Welcome to Nativewind!</Text>
+    <View>
+      <Text>HomeScreen</Text>
+      <Button
+        title="Logout"
+        onPress={() => {
+          signOut({ redirectUrl: "/(auth)" });
+        }}
+      />
     </View>
   );
-}
+};
+
+export default HomeScreen;
